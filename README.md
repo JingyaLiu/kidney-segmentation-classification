@@ -101,27 +101,6 @@ $RESULTS_FOLDER/nnUNet/3d_fullres/Task064_KiTS_labelsFixed/nnUNetTrainerV2__nnUN
 - `model_final_checkpoint.model.pkl` (model metadata)
 - `plans.pkl` (training configuration)
 
-### **6. If Model is Missing**
-If you don't have the trained model, you have several options:
-
-**Option A: Use Pre-trained Models**
-```bash
-# Download pre-trained nnUNet models (if available)
-# Check nnUNet documentation for pre-trained model downloads
-```
-
-**Option B: Train Your Own Model**
-```bash
-# Train a new model using nnUNet
-nnUNet_plan_and_preprocess -d Task064_KiTS_labelsFixed
-nnUNet_train -d Task064_KiTS_labelsFixed -m 3d_fullres -f 3
-```
-
-**Option C: Use Different Model**
-```bash
-# Modify the script to use a different available model
-python run_kidney_segmentation_robust.py -t YourTaskName -m 3d_fullres
-```
 
 ## 📊 **Results**
 
