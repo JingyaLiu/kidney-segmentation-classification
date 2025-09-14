@@ -36,6 +36,9 @@ nnUNet_predict -i test_3_cases_input -o test_3_cases_output -t Task064_KiTS_labe
 - `-f 3` specifies which fold to use
 - nnUNet automatically finds the model at: `$RESULTS_FOLDER/nnUNet/3d_fullres/Task064_KiTS_labelsFixed/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/`
 
+**Model weights:**
+https://ccnymailcuny-my.sharepoint.com/:f:/g/personal/jliu008_citymail_cuny_edu/EkaFGLQB5XdKvVb1y2G7NHgB6RGk344fS3S2oV9-X4D_9g?e=qo0npb
+
 
 ## 📋 **Requirements**
 
