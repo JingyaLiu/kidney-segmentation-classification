@@ -30,10 +30,6 @@ export RESULTS_FOLDER="/home/ciml/Documents/code/kidneyAI/kidney-segmentation-cl
 nnUNet_predict -i test_3_cases_input -o test_3_cases_output -t Task064_KiTS_labelsFixed -m 3d_fullres -f 3 --overwrite_existing
 ```
 
-### **Method 3: Original Script**
-```bash
-python run_inference_nnunet_v1.py
-```
 
 ## 📋 **Requirements**
 
