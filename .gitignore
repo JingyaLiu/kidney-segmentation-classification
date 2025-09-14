@@ -1,0 +1,39 @@
+# Data directories (too large for git)
+dataset/
+nnUNet_trained_models/
+test_3_cases_input/
+test_3_cases_output/
+
+# Backup files
+backup_files/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+**/__pycache__/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
