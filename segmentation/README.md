@@ -17,6 +17,8 @@ pip install -e .
 
 **Official nnUNet Repository:** [https://github.com/MIC-DKFZ/nnUNet](https://github.com/MIC-DKFZ/nnUNet)
 
+Refer to the official repo for installation, data preprocessing, training, and inference. 
+
 ### Additional Dependencies
 ```bash
 # Install additional dependencies
@@ -59,38 +61,6 @@ dataset/
             ├── case_00000.nii.gz
             ├── case_00001.nii.gz
             └── ...
-```
-
-### Dataset JSON Format
-Create a `dataset.json` file in your task folder:
-```json
-{
-    "name": "KiTS_labelsFixed",
-    "description": "Kidney Tumor Segmentation",
-    "tensorImageSize": "3D",
-    "reference": "KiTS Challenge",
-    "licence": "CC-BY-SA 4.0",
-    "release": "1.0",
-    "modality": {
-        "0": "CT"
-    },
-    "labels": {
-        "0": "background",
-        "1": "kidney",
-        "2": "tumor"
-    },
-    "numTraining": 210,
-    "numTest": 90,
-    "training": [
-        {
-            "image": "./imagesTr/case_00000_0000.nii.gz",
-            "label": "./labelsTr/case_00000.nii.gz"
-        }
-    ],
-    "test": [
-        "./imagesTs/case_00000_0000.nii.gz"
-    ]
-}
 ```
 
 ## Preprocessing
@@ -156,29 +126,13 @@ $RESULTS_FOLDER/nnUNet/3d_fullres/Task064_KiTS_labelsFixed/nnUNetTrainerV2__nnUN
 
 ## Inference
 
-### Method 1: Robust Script (Recommended)
-```bash
-# Run with default settings
-python run_kidney_segmentation_robust.py
-
-# Run with custom input/output
-python run_kidney_segmentation_robust.py -i your_input_folder -o your_output_folder
-
-# Run with specific folds
-python run_kidney_segmentation_robust.py -f 3
-
-# Run with specific test cases
-python run_kidney_segmentation_robust.py --test-cases case_00000 case_00001
-```
-
-### Method 2: Direct Command
 ```bash
 # Step 1: Set environment variables (this tells nnUNet where to find the model)
-export nnUNet_raw_data_base="/home/ciml/Documents/code/kidneyAI/kidney-segmentation-classification/"
-export RESULTS_FOLDER="/home/ciml/Documents/code/kidneyAI/kidney-segmentation-classification/nnUNet_trained_models/nnUNet"
+export nnUNet_raw_data_base="path_to_data_folder"
+export RESULTS_FOLDER="path_to_result_folder"
 
 # Step 2: Run inference (nnUNet finds the model using RESULTS_FOLDER + task name)
-nnUNet_predict -i test_3_cases_input/NIH/ -o test_3_cases_output/NIH/ -t Task064_KiTS_labelsFixed -m 3d_fullres -f 3 --overwrite_existing
+nnUNet_predict -i input_folder -o output_folder -t Task064_KiTS_labelsFixed -m 3d_fullres -f 3 --overwrite_existing
 ```
 
 **Command Parameters:**
@@ -210,13 +164,9 @@ Extract the downloaded models to:
         └── 3d_fullres/
             └── Task064_KiTS_labelsFixed/
                 └── nnUNetTrainerV2__nnUNetPlansv2.1/
-                    ├── fold_0/
+                    ├── fold_3/
                     │   ├── model_final_checkpoint.model
                     │   └── model_final_checkpoint.model.pkl
-                    ├── fold_1/
-                    ├── fold_2/
-                    ├── fold_3/
-                    ├── fold_4/
                     └── plans.pkl
 ```
 
@@ -232,15 +182,6 @@ ls -la ./nnUNet_trained_models/nnUNet/nnUNet/3d_fullres/Task064_KiTS_labelsFixed
 **Required files in each fold directory:**
 - `model_final_checkpoint.model` (trained model weights)
 - `model_final_checkpoint.model.pkl` (model metadata)
-
-## Visualization
-
-```bash
-# Visualize segmentation results
-python visual/visualize_segmentation.py -i input_folder -o output_folder --case case_name --save-dir visualizations
-
-# Example with specific case
-python visual/visualize_segmentation.py -i test_3_cases_input -o test_3_cases_output/NIH/ --case TCGA-B9-4113_1.3.6.1.4.1.14519.5.2.1.8421.4010.244934789279678299029033011559 --save-dir visualizations
 ```
 
 ## Troubleshooting
