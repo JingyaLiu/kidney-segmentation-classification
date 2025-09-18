@@ -1,11 +1,16 @@
 # Data directories (too large for git)
-dataset/
-nnUNet_trained_models/
-test_3_cases_input/
-test_3_cases_output/
+segmentation/data/
+segmentation/dataset/
+segmentation/nnUNet_trained_models/
+segmentation/test_3_cases_input/
+segmentation/test_3_cases_output/
+segmentation/.DS_Store
+segmentation/.run_individual_nih_inference.sh
+segmentation/.run_kidney_segmentation_robust.sh
+segmentation/.run_individual_nih_inference.sh.log
 
 # Backup files
-backup_files/
+segmentation/backup_files/
 
 # Python cache
 __pycache__/
@@ -33,6 +38,24 @@ Thumbs.db
 
 # Logs
 *.log
+
+#large files
+*.nii.gz
+*.nii
+*.dcm
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.webp
+*.svg
+*.ico
+*.mp4
+*.mov
+*.avi
+*.mkv
 
 # Temporary files
 *.tmp

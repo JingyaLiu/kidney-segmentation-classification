@@ -1,0 +1,16 @@
+torch
+torchvision
+numpy
+scikit-learn
+nibabel
+SimpleITK
+tqdm
+matplotlib
+seaborn
+pandas
+opencv-python
+albumentations
+tensorboard
+focal-loss-torch
+scikit-image
+scipy

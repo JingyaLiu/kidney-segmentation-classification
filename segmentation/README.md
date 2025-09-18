@@ -22,12 +22,12 @@ python run_kidney_segmentation_robust.py --test-cases case_00000 case_00001
 ### **Method 2: Direct Command**
 ```bash
 # Step 1: Set environment variables (this tells nnUNet where to find the model)
-export nnUNet_raw_data_base="/home/ciml/Documents/code/kidneyAI/kidney-segmentation-classification/dataset"
-export nnUNet_preprocessed="/home/ciml/Documents/code/kidneyAI/kidney-segmentation-classification/dataset/preprocessed"
+export nnUNet_raw_data_base="/home/ciml/Documents/code/kidneyAI/kidney-segmentation-classification/"
+# export nnUNet_preprocessed="/home/ciml/Documents/code/kidneyAI/kidney-segmentation-classification/"
 export RESULTS_FOLDER="/home/ciml/Documents/code/kidneyAI/kidney-segmentation-classification/nnUNet_trained_models/nnUNet"
 
 # Step 2: Run inference (nnUNet finds the model using RESULTS_FOLDER + task name)
-nnUNet_predict -i test_3_cases_input -o test_3_cases_output -t Task064_KiTS_labelsFixed -m 3d_fullres -f 3 --overwrite_existing
+nnUNet_predict -i test_3_cases_input/NIH/ -o test_3_cases_output/NIH/ -t Task064_KiTS_labelsFixed -m 3d_fullres -f 3 --overwrite_existing
 ```
 
 **How it works:**
@@ -101,12 +101,12 @@ $RESULTS_FOLDER/nnUNet/3d_fullres/Task064_KiTS_labelsFixed/nnUNetTrainerV2__nnUN
 - `model_final_checkpoint.model.pkl` (model metadata)
 - `plans.pkl` (training configuration)
 
+##  **Visualize 
+python visual/visualize_segmentation.py -i input_folder -o output_folder --case case_name --save-dir visualizations
 
-## 📊 **Results**
+.nii.gz
 
-- **Segmentation Labels**: 0=background, 1=kidney, 3=tumor
-- **Model Performance**: 96%+ Dice score for kidney segmentation
-- **Output Format**: NIfTI (.nii.gz) files
+python visual/visualize_segmentation.py -i test_3_cases_input -o test_3_cases_output/NIH/ --case TCGA-B9-4113_1.3.6.1.4.1.14519.5.2.1.8421.4010.244934789279678299029033011559 --save-dir visualizations
 
 ## 🔧 **Troubleshooting**
 
