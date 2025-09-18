@@ -17,8 +17,6 @@ The framework utilizes a novel dual-path classification network that leverages b
 kidney-segmentation-classification/
 ├── segmentation/                    # Kidney and renal mass segmentation
 │   ├── README.md                   # Detailed segmentation guide
-│   ├── run_kidney_segmentation_robust.py
-│   ├── visual/                     # Visualization tools
 │   └── ...                        # nnUNet-based segmentation
 ├── classfication/                  # Renal mass classification
 │   ├── README.md                   # Detailed classification guide
@@ -40,9 +38,9 @@ cd segmentation/
 ```
 
 ### 2. Classification (Dual-path Network)
-Navigate to the `classfication/` folder for renal mass subtype classification:
+Navigate to the `classification/` folder for renal mass subtype classification:
 ```bash
-cd classfication/
+cd classification/
 # Follow the detailed README.md in that folder
 ```
 
