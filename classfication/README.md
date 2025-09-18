@@ -78,7 +78,7 @@ export OUTPUT_DIR="/path/to/output"
 ./inference.sh
 ```
 ### Model Weights ###
-Insert link
+**Download Link**: [Model weights](https://ccnymailcuny-my.sharepoint.com/:f:/g/personal/jliu008_citymail_cuny_edu/EmeRp9wOViJHk86adV34bfwBvg4onoDeuszVqG3xo9edcw?e=Tr6uw3)
 
 
 
