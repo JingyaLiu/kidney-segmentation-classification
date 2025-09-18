@@ -14,6 +14,7 @@ from collections import Counter
 from skimage import morphology, filters, segmentation
 from skimage.measure import label, regionprops
 from scipy import ndimage
+import argparse
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -384,15 +385,38 @@ class EnhancedDataPreprocessor:
         return dict(distribution)
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(description='Data Preprocessing with Masks')
+    
+    parser.add_argument('--ct_data_root', type=str, required=True,
+                       help='Path to CT image data directory')
+    parser.add_argument('--seg_data_root', type=str, required=True,
+                       help='Path to segmentation data directory')
+    parser.add_argument('--kits_json_path', type=str, required=True,
+                       help='Path to KITS JSON metadata file')
+    parser.add_argument('--output_dir', type=str, required=True,
+                       help='Output directory for processed data')
+    
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
+    args = parse_args()
+    
+    logger.info("Starting enhanced data preprocessing...")
+    logger.info(f"CT data root: {args.ct_data_root}")
+    logger.info(f"Segmentation data root: {args.seg_data_root}")
+    logger.info(f"KITS JSON path: {args.kits_json_path}")
+    logger.info(f"Output directory: {args.output_dir}")
+    
     preprocessor = EnhancedDataPreprocessor(
-        ct_data_root="../Path/to/ct_data",
-        seg_data_root="../Path/to/seg_data",
-        kits_json_path="../Path/to/kits.json"
+        ct_data_root=args.ct_data_root,
+        seg_data_root=args.seg_data_root,
+        kits_json_path=args.kits_json_path
     )
     
     processed_cases = preprocessor.process_all_cases(
-        output_dir="./processed_data_with_smooth_masks_augmented"
+        output_dir=args.output_dir
     )
     
-    print(f"Processed {len(processed_cases)} cases with enhanced preprocessing")
+    logger.info(f"Processed {len(processed_cases)} cases with enhanced preprocessing")
